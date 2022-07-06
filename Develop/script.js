@@ -1,4 +1,7 @@
 var now = moment().format("MMMM Do YYYY")
+var currentHour = moment().hour();
+console.log("currentHour", currentHour);
+
 $("#currentDay").text(now);
 
 var text = document.querySelector("#event-discription")
@@ -7,23 +10,32 @@ localStorage.setItem("#event-description", text);
 
 $(document).ready(function () {
     if(localStorage.getItem("#event-description")) { 
-        $event-description.html(localStorage.getItem("#event-description"));
+        $(".event-description").html(localStorage.getItem("#event-description"));
     }
     $("#saveBtn").click(function () {        
         localStorage.setItem("#event-description", $event-description.html());
+
     });
+
 });
 
-document.onload = displayEvent();
 
+function ChageColor(){
+    var textbody = document.querySelector(".card-body");
+    $.each( textbody, function( index, value){
+      var schedulerHour = $(this).attr("id");
+      if(currentHour < schedulerHour){
+        $(value).addClass("future");
 
-// WHEN I am presented with time blocks for standard business hours
-// WHEN I view the time blocks for that day
-// THEN each time block is color-coded to indicate whether it is in the past, present, or future
+      }else if(currentHour == schedulerHour){
+        $(value).addClass("present");
+        }else if(currentHour > schedulerHour){
+            $(value).addClass("past");
+        }
 
+    })
 
-// WHEN I click the save button for that time block
-// THEN the text for that event is saved in local storage
+    
+    
 
-// WHEN I refresh the page
-// THEN the saved events persist
+}
