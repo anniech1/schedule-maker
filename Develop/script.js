@@ -26,7 +26,6 @@ function ChageColor(){
       var schedulerHour = $(this).attr("id");
       if(currentHour < schedulerHour){
         $(value).addClass("future");
-
       }else if(currentHour == schedulerHour){
         $(value).addClass("present");
         }else if(currentHour > schedulerHour){
