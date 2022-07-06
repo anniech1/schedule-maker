@@ -4,16 +4,16 @@ console.log("currentHour", currentHour);
 
 $("#currentDay").text(now);
 
-var text = document.querySelector("#event-discription")
+var text = document.querySelector("#discription")
 var saveButton = document.querySelector("#saveBtn"); 
 localStorage.setItem("#event-description", text);
 
 $(document).ready(function () {
-    if(localStorage.getItem("#event-description")) { 
-        $(".event-description").html(localStorage.getItem("#event-description"));
+    if(localStorage.getItem("#description")) { 
+        $(".description").html(localStorage.getItem("#description"));
     }
     $("#saveBtn").click(function () {        
-        localStorage.setItem("#event-description", $event-description.html());
+        localStorage.setItem("#description", $description.html());
 
     });
 
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 
 function ChageColor(){
-    var textbody = document.querySelector(".card-body");
+    var textbody = document.querySelector(".description");
     $.each( textbody, function( index, value){
       var schedulerHour = $(this).attr("id");
       if(currentHour < schedulerHour){
@@ -34,8 +34,5 @@ function ChageColor(){
         }
 
     })
-
-    
-    
 
 }
